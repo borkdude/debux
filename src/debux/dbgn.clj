@@ -1,11 +1,11 @@
 (ns debux.dbgn
-  (:require [clojure.zip :as z]
-            [cljs.analyzer :as analyzer]
+  (:require #_[cljs.analyzer :as analyzer]
+            [clojure.zip :as z]
             [debux.common.macro-specs :as ms]
             [debux.common.skip :as sk]
             [debux.common.util :as ut]
-            [debux.macro-types :as mt]
-            [debux.cs.macro-types :as cs.mt] ))
+            [debux.cs.macro-types :as cs.mt] 
+            [debux.macro-types :as mt]))
 
 ;;; Basic strategy for dbgn
 
@@ -178,8 +178,8 @@
                 recur)
 
             ((:expand-type (macro-types env)) sym)
-            (-> (z/replace loc (if (ut/cljs-env? env)
-                                 (analyzer/macroexpand-1 env node)
+            (-> (z/replace loc (if false #_(ut/cljs-env? env)
+                                 nil #_(analyzer/macroexpand-1 env node)
                                  (macroexpand-1 node) ))
                 recur)
 
